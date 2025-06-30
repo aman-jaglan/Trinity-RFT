@@ -1,0 +1,166 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "task_type": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "prompt": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "response": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "reward": {
+      "dtype": "float64",
+      "_type": "Value"
+    },
+    "application_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "response_index": {
+      "dtype": "int64",
+      "_type": "Value"
+    },
+    "is_synthetic": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "has_failure": {
+      "dtype": "bool",
+      "_type": "Value"
+    },
+    "challenge_types": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "failed_rewards": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "app_metadata": {
+      "application_id": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "challenge_types": {
+        "feature": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "_type": "Sequence"
+      },
+      "has_synthetic": {
+        "dtype": "bool",
+        "_type": "Value"
+      },
+      "num_responses_used": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "num_trajectories": {
+        "dtype": "int64",
+        "_type": "Value"
+      },
+      "score_range": {
+        "dtype": "string",
+        "_type": "Value"
+      }
+    },
+    "final_decision": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "raw_sample": {
+      "metadata": {
+        "application_id": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "challenge_types": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "Sequence"
+        },
+        "has_synthetic": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "num_responses_used": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "num_trajectories": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "score_range": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      },
+      "prompt": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "responses": [
+        {
+          "metadata": {
+            "augmented": {
+              "dtype": "bool",
+              "_type": "Value"
+            },
+            "challenge_types": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "Sequence"
+            },
+            "failed_rewards": {
+              "feature": {
+                "dtype": "string",
+                "_type": "Value"
+              },
+              "_type": "Sequence"
+            },
+            "has_failure": {
+              "dtype": "bool",
+              "_type": "Value"
+            },
+            "synthetic": {
+              "dtype": "bool",
+              "_type": "Value"
+            }
+          },
+          "response": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "reward": {
+            "dtype": "float64",
+            "_type": "Value"
+          }
+        }
+      ]
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

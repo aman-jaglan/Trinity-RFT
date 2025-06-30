@@ -1,0 +1,79 @@
+project: "Loan-Underwriting-Learning"
+name: "loan-underwriting-grpo"
+checkpoint_root_dir: "./checkpoints"
+
+algorithm:
+  algorithm_type: grpo
+  repeat_times: 4
+
+model:
+  model_path: "Qwen/Qwen2.5-1.5B-Instruct"  # Replace with your model
+  max_prompt_tokens: 1024
+  max_response_tokens: 1024
+
+cluster:
+  node_num: 1
+  gpu_per_node: 1
+
+buffer:
+  total_epochs: 3
+  batch_size: 4
+  max_retry_times: 3
+  max_retry_interval: 1
+  
+  explorer_input:
+    taskset:
+      name: loan_underwriting
+      storage_type: file
+      path: 'examples/loan_failure_learning/data/loan_underwriting_train.jsonl'
+      format:
+        prompt_key: 'prompt'
+        response_key: 'response'
+      rollout_args:
+        temperature: 0.7
+    
+    eval_tasksets:
+    - name: loan_underwriting_eval
+      storage_type: file  
+      path: 'examples/loan_failure_learning/data/loan_underwriting_test.jsonl'
+      format:
+        prompt_key: 'prompt'
+        response_key: 'response'
+    
+    default_workflow_type: 'loan_underwriting_workflow'
+  
+  trainer_input:
+    experience_buffer:
+      name: loan_underwriting_buffer
+      storage_type: queue
+      path: 'sqlite:///examples/loan_failure_learning/loan_underwriting.db'
+
+explorer:
+  eval_interval: 10
+  runner_num: 2
+  rollout_model:
+    engine_type: vllm_async
+    engine_num: 1
+    tensor_parallel_size: 1
+    enable_prefix_caching: false
+    enforce_eager: true
+    dtype: bfloat16
+    seed: 42
+
+synchronizer:
+  sync_method: 'nccl'
+  sync_interval: 1
+  sync_timeout: 1200
+
+trainer:
+  trainer_type: 'verl'
+  trainer_config_path: 'examples/loan_failure_learning/train_loan_failure.yaml'
+  save_interval: 50
+
+monitor:
+  monitor_type: wandb
+  monitor_args:
+    project: "loan-underwriting-learning"
+  enable_ray_timeline: false
+
+mode: "both"
