@@ -23,6 +23,7 @@ requires-python = ">=3.10"
 dependencies = [
     "verl==0.4.0",
     "ray[default]>=2.45.0",
+    "vllm==0.9.1",
     "tensordict==0.6.2",
     "wandb",
     "omegaconf",
@@ -71,18 +72,6 @@ doc = [
 
 flash_attn = [
     "flash-attn==2.8.0.post2"
-]
-
-# CPU testing - just data processing extras (main deps already included)
-cpu-test = [
-    "py-data-juicer"
-]
-
-# GPU training - adds vLLM and flash attention to main dependencies
-gpu-full = [
-    "vllm==0.9.1",
-    "flash-attn==2.8.0.post2",
-    "py-data-juicer"
 ]
 
 [tool.setuptools.packages.find]
