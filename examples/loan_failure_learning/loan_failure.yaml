@@ -25,22 +25,25 @@ buffer:
     taskset:
       name: loan_underwriting
       storage_type: file
-      path: 'examples/loan_failure_learning/data/loan_underwriting_train.jsonl'
+      path: 'Jarrodbarnes/arc-loan-underwriting-trinity-rft-v2'
+      split: 'train'
       format:
         prompt_key: 'prompt'
-        response_key: 'response'
+        response_key: 'responses'
       rollout_args:
         temperature: 0.7
     
     eval_tasksets:
     - name: loan_underwriting_eval
       storage_type: file  
-      path: 'examples/loan_failure_learning/data/loan_underwriting_test.jsonl'
+      path: 'Jarrodbarnes/arc-loan-underwriting-trinity-rft-v2'
+      split: 'test'
       format:
         prompt_key: 'prompt'
-        response_key: 'response'
+        response_key: 'responses'
     
     default_workflow_type: 'loan_underwriting_workflow'
+    default_reward_fn_type: 'loan_underwriting_reward'
   
   trainer_input:
     experience_buffer:

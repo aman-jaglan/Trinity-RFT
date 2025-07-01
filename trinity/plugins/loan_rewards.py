@@ -23,7 +23,7 @@ class LoanUnderwritingReward(RewardFn):
         super().__init__()
         # Asymmetric reward scaling for imbalanced dataset (79% reward=4)
         # Higher rewards for minority classes to prevent mode collapse
-        self.reward_scale = {woalr
+        self.reward_scale = {
             1: 0.0,    # Worst (minority) - clear fail
             2: 0.15,   # Poor (minority) - some violations  
             3: 0.3,    # Fair (minority) - minor issues

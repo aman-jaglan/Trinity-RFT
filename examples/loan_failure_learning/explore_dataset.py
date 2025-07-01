@@ -13,7 +13,7 @@ def explore_dataset():
     
     try:
         # Load the dataset
-        ds = load_dataset("Jarrodbarnes/arc-loan-underwriting-trinity-rft")
+        ds = load_dataset("Jarrodbarnes/arc-loan-underwriting-trinity-rft-v2")
         
         print(f"✅ Dataset loaded successfully!")
         print(f"📊 Dataset info:")
