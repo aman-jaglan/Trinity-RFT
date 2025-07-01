@@ -90,6 +90,13 @@ class TensorboardMonitor(Monitor):
 @MONITOR.register_module("wandb")
 class WandbMonitor(Monitor):
     def __init__(self, project: str, name: str, role: str, config: Config = None) -> None:
+        # Load environment variables from .env file
+        try:
+            from dotenv import load_dotenv
+            load_dotenv()
+        except ImportError:
+            pass
+        
         self.logger = wandb.init(
             project=project,
             group=name,

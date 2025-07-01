@@ -144,7 +144,7 @@ Important Guidelines:
                 reward = self.reward_fn(
                     response=exp.response_text,
                     prompt=self.task.raw_task.get('prompt'),
-                    truth=self.truth,
+                    truth=self.task.raw_task.get('response'),  # Use response from selected best
                     return_dict=self.is_eval
                 )
                 
@@ -161,6 +161,8 @@ Important Guidelines:
                     exp.info = {}
                 exp.info['workflow'] = 'loan_underwriting'
                 exp.info['reward_type'] = 'custom_loan_underwriting'
+                exp.info['has_truth'] = bool(self.task.raw_task.get('response'))
+                exp.info['truth_reward'] = self.task.raw_task.get('reward', 0.0)
                 
                 logger.debug(f"Calculated reward: {reward} for response length: {len(exp.response_text)}")
                 

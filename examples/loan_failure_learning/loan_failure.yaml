@@ -13,13 +13,13 @@ model:
 
 cluster:
   node_num: 1
-  gpu_per_node: 1
+  gpu_per_node: 2
 
 buffer:
   total_epochs: 3
   batch_size: 4
   max_retry_times: 3
-  max_retry_interval: 1
+  max_retry_interval: 1 
   
   explorer_input:
     taskset:
